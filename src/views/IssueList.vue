@@ -23,7 +23,6 @@ import axios from 'axios';
 const client = axios.create({
   baseURL: `${process.env.VUE_APP_GITHUB_ENDPOINT}`, 
   headers: {
-    'Access-Control-Allow-Origin': '*',
     'Accept': 'application/vnd.github.v3+json',
     'Content-Type':'application/json',
     'Authorization': `token ${process.env.VUE_APP_GITHUB_TOKEN}`
@@ -55,6 +54,9 @@ export default {
           this.issues.splice(index, 1)
       })
     },
+  },
+  created(){
+    this.getIssues();
   }
 }
 </script>
